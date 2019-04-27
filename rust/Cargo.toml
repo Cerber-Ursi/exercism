@@ -2,4 +2,6 @@
 
 members = [
     "gigasecond",
+    "hello-world",
+    "reverse-string",
 ]
