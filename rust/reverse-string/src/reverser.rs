@@ -7,7 +7,7 @@ use unic_normal::StrNormalForm;
 ///
 /// It is handled internally by creating an (owned) String, normalized according to
 /// Unicode Normalization Form C (using the [Unic](https://docs.rs/unic-normal/0.9.0/unic_normal/) crate).
-/// If the normalization appears to be a no-op (i.e. when the string is already in NFC),
+/// If the normalization appears to be a no-op (i.eexercism . when the string is already in NFC),
 /// the generated string is immediately thrown away without storing in struct, and Reverser uses
 /// the fallback implementation without graphemes handling.
 ///
