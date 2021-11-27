@@ -1,5 +1,9 @@
 {
     "cSpell.words": [
-        "Transcriptor"
-    ]
+        "Interop",
+        "Transcriptor",
+        "downlevel",
+        "tslib"
+    ],
+    "eslint.enable": true
 }

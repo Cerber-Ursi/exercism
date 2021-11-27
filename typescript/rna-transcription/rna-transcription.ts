@@ -1,32 +1,32 @@
 class Transcriptor {
 
-    toRna(sequence: string) {
+    toRna(sequence: string): string {
         return Array
             .from(sequence)
             .map(this.toRnaSingle)
-            .join('')
+            .join('');
     }
 
-    private toRnaSingle(nucleotide: string) {
+    private toRnaSingle(nucleotide: string): string {
         // Sanity check
         if (nucleotide.length !== 1) {
-            throw new Error('toRnaSingle expects a single nucleotide')
+            throw new Error('toRnaSingle expects a single nucleotide');
         }
         // Transcription itself
         switch (nucleotide) {
             case 'C':
-                return 'G'
+                return 'G';
             case 'G':
-                return 'C'
+                return 'C';
             case 'T':
-                return 'A'
+                return 'A';
             case 'A':
-                return 'U'
+                return 'U';
             default:
-                throw new Error('Invalid input DNA.')
+                throw new Error('Invalid input DNA.');
         }
     }
 
 }
 
-export default Transcriptor
+export default Transcriptor;
