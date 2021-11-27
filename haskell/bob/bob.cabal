@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f62fa344c4e84eba75328fd58e5d1bed8131e5926aa185dedcac7a36a7b0c4d1
+-- hash: 5520ab0b8cf48d6e2fe719cfc8c15b5b80e222a7c314db7d7c94c010da8715d8
 
 name:           bob
 version:        1.4.0.10
@@ -14,6 +14,9 @@ library
   exposed-modules:
       Bob
   other-modules:
+      Classifier
+      Sentence
+      TextKind
       Paths_bob
   hs-source-dirs:
       src
