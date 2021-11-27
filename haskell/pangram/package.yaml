@@ -1,0 +1,30 @@
+name: pangram
+version: 1.4.1.10
+
+dependencies:
+  - base
+
+library:
+  exposed-modules: Pangram
+  source-dirs: src
+  ghc-options: -Wall
+  # dependencies:
+  # - foo       # List here the packages you
+  # - bar       # want to use in your solution.
+
+tests:
+  test:
+    main: Tests.hs
+    source-dirs: test
+    dependencies:
+      - pangram
+      - hspec
+
+benchmarks:
+  bench:
+    main: bench.hs
+    source-dirs: bench
+    dependencies:
+      - pangram
+      - criterion
+    ghc-options: -O2
