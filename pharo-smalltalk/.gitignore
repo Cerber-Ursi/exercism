@@ -1,4 +1,3 @@
-pharo-vm
-pharo-local
-pharo
-pharo-ui
+/pharo*
+# not sure why it doesn't work as "/Pharo*"
+/Phar*
