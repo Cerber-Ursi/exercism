@@ -4,4 +4,7 @@ members = [
     "gigasecond",
     "hello-world",
     "reverse-string",
+    "leap",
+    "raindrops",
+    "nth-prime",
 ]
