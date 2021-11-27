@@ -1,7 +1,6 @@
 module Main where
 
 import SpaceAge
-import Alternative
 import Criterion
 import Criterion.Main
 
@@ -11,36 +10,36 @@ seconds = map fromIntegral ([100,200..2000] ++ [3000,4000..50000] ++ [100000,105
 main = defaultMain 
     [ 
         bgroup "Mercury" [
-            bench "original" $ nf (map (ageOn Mercury)) seconds,
-            bench "alternative" $ nf (map (altAgeOn Mercury)) seconds
+            bench "canonical" $ nf (map (ageOn Mercury)) seconds,
+            bench "recursive" $ nf (map (ageOnRecursive Mercury)) seconds
         ],
         bgroup "Venus" [
-            bench "original" $ nf (map (ageOn Venus)) seconds,
-            bench "alternative" $ nf (map (altAgeOn Venus)) seconds
+            bench "canonical" $ nf (map (ageOn Venus)) seconds,
+            bench "recursive" $ nf (map (ageOnRecursive Venus)) seconds
         ],
         bgroup "Earth" [
-            bench "original" $ nf (map (ageOn Earth)) seconds,
-            bench "alternative" $ nf (map (altAgeOn Earth)) seconds
+            bench "canonical" $ nf (map (ageOn Earth)) seconds,
+            bench "recursive" $ nf (map (ageOnRecursive Earth)) seconds
         ],
         bgroup "Mars" [
-            bench "original" $ nf (map (ageOn Mars)) seconds,
-            bench "alternative" $ nf (map (altAgeOn Mars)) seconds
+            bench "canonical" $ nf (map (ageOn Mars)) seconds,
+            bench "recursive" $ nf (map (ageOnRecursive Mars)) seconds
         ],
         bgroup "Jupiter" [
-            bench "original" $ nf (map (ageOn Jupiter)) seconds,
-            bench "alternative" $ nf (map (altAgeOn Jupiter)) seconds
+            bench "canonical" $ nf (map (ageOn Jupiter)) seconds,
+            bench "recursive" $ nf (map (ageOnRecursive Jupiter)) seconds
         ],
         bgroup "Saturn" [
-            bench "original" $ nf (map (ageOn Saturn)) seconds,
-            bench "alternative" $ nf (map (altAgeOn Saturn)) seconds
+            bench "canonical" $ nf (map (ageOn Saturn)) seconds,
+            bench "recursive" $ nf (map (ageOnRecursive Saturn)) seconds
         ],
         bgroup "Uranus" [
-            bench "original" $ nf (map (ageOn Uranus)) seconds,
-            bench "alternative" $ nf (map (altAgeOn Uranus)) seconds
+            bench "canonical" $ nf (map (ageOn Uranus)) seconds,
+            bench "recursive" $ nf (map (ageOnRecursive Uranus)) seconds
         ],
         bgroup "Neptune" [
-            bench "original" $ nf (map (ageOn Neptune)) seconds,
-            bench "alternative" $ nf (map (altAgeOn Neptune)) seconds
+            bench "canonical" $ nf (map (ageOn Neptune)) seconds,
+            bench "recursive" $ nf (map (ageOnRecursive Neptune)) seconds
         ]
     ]
     

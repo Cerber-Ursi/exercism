@@ -5,8 +5,7 @@ dependencies:
   - base
 
 library:
-  # this is commented out, since otherwise the Cabal file is broken
-  # exposed-modules: SpaceAge, Alternative
+  exposed-modules: SpaceAge
   source-dirs: src
   ghc-options: -Wall
   # dependencies:

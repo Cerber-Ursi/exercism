@@ -1,4 +1,4 @@
-module SpaceAge (Planet(..), ageOn) where
+module SpaceAge (Planet(..), ageOn, ageOnRecursive) where
 
 data Planet = Mercury
             | Venus
@@ -9,12 +9,25 @@ data Planet = Mercury
             | Uranus
             | Neptune
 
+-- Canonical solution, hinted to at previous iteration
 ageOn :: Planet -> Float -> Float
 ageOn planet seconds = seconds / yearOn planet
 
 yearOn :: Planet -> Float
-yearOn Earth = 31557600
-yearOn planet = orbitalPeriodOf planet * yearOn Earth
+yearOn planet = orbitalPeriodOf planet * yearOnEarth
+
+-- Original solution, with recursion in yearOn function.
+-- Turned out to be about 10% worse (and even worse for the Earth)
+ageOnRecursive :: Planet -> Float -> Float
+ageOnRecursive planet seconds = seconds / yearOnRecursive planet
+
+yearOnRecursive :: Planet -> Float
+yearOnRecursive Earth = yearOnEarth
+yearOnRecursive planet = orbitalPeriodOf planet * yearOnRecursive Earth
+
+-- Common constants
+yearOnEarth :: Float
+yearOnEarth = 31557600
 
 orbitalPeriodOf :: Planet -> Float
 orbitalPeriodOf Mercury = 0.2408467

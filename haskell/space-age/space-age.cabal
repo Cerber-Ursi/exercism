@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 1aaef80b02db0ef9dfa4f6ebadd14ee747e3cdeb6eedc5a4040cb35fba6cb9bc
+-- hash: 4b14d410492579127186dd2c50460bf007a619d3b14aaf26a4899985d7dabe8e
 
 name:           space-age
 version:        1.1.0.5
@@ -12,7 +12,6 @@ build-type:     Simple
 
 library
   exposed-modules:
-      Alternative
       SpaceAge
   other-modules:
       Paths_space_age
