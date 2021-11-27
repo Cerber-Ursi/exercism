@@ -23,7 +23,7 @@ data Case = Case { description :: String
 
 cases :: [Case]
 cases = [ Case { description = "stating something"
-               , input       = "Tom-ay-to, tom-aaaah-to."
+               , input       = "Tom-ay-to, tom-ah-to."
                , expected    = "Whatever."
                }
         , Case { description = "shouting"
@@ -71,7 +71,7 @@ cases = [ Case { description = "stating something"
                , expected    = "Sure."
                }
         , Case { description = "shouting with special characters"
-               , input       = "ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!"
+               , input       = "OMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!"
                , expected    = "Whoa, chill out!"
                }
         , Case { description = "shouting with no exclamation mark"
@@ -107,7 +107,7 @@ cases = [ Case { description = "stating something"
                , expected    = "Whatever."
                }
         , Case { description = "starting with whitespace"
-               , input       = "         hmmmmmmm..."
+               , input       = "         hmm..."
                , expected    = "Whatever."
                }
         , Case { description = "ending with whitespace"
