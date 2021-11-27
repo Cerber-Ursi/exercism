@@ -6,7 +6,6 @@ import Criterion.Main
 
 main = defaultMain 
     [ 
-        -- uncomment this to benchmark every implementation independently
         bgroup "single mod" [
             bench "1996" $ nf isLeapYear 1996,
             bench "1997" $ nf isLeapYear 1997,
