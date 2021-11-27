@@ -2,18 +2,18 @@ use std::ops::Add;
 use std::fmt::{self, Formatter, Display};
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
-struct Hours(u8);
+struct Hours(u32);
 
 impl Hours {
     fn from_i32(input: i32) -> Self {
-        Self(((input as u32) % 24) as u8)
+        Self((input as u32) % 24)
     }
 }
 
 impl Add<i32> for Hours {
     type Output = Self;
     fn add(self, other: i32) -> Self {
-        Self::from_i32(self.0 as i32 + other % 24)
+        Self::from_i32(self.0 as i32 + other)
     }
 }
 
@@ -24,11 +24,11 @@ impl Display for Hours {
 }
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
-struct Minutes(u8);
+struct Minutes(u32);
 
 impl Minutes {
-    fn from_i32(input: i32) -> (Self, i32) {
-        (Self(((input as u32) % 60) as u8), input / 60)
+    fn from_i32_wrapped(input: i32) -> (Self, i32) {
+        (Self((input as u32) % 60), input / 60)
     }
 }
 
@@ -45,17 +45,17 @@ impl Display for Minutes {
     }
 }
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq)]
 pub struct Clock(Hours, Minutes);
 
 impl Clock {
     pub fn new(hours: i32, minutes: i32) -> Self {
-        let (minutes, wrap) = Minutes::from_i32(minutes);
+        let (minutes, wrap) = Minutes::from_i32_wrapped(minutes);
         let hours = Hours::from_i32(hours) + wrap;
         Self(hours, minutes)
     }
 
-    pub fn add_minutes(&self, minutes: i32) -> Self {
+    pub fn add_minutes(self, minutes: i32) -> Self {
         let (minutes, wrap) = self.1 + minutes;
         let hours = self.0 + wrap;
         Self(hours, minutes)
