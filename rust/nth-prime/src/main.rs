@@ -1,3 +1,4 @@
+#[cfg(feature = "memoed")]
 use nth_prime::{PrimesMemoed, PrimeGenerator};
 use std::time::Instant;
 
