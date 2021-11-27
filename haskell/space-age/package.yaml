@@ -5,7 +5,8 @@ dependencies:
   - base
 
 library:
-  exposed-modules: SpaceAge
+  # this is commented out, since otherwise the Cabal file is broken
+  # exposed-modules: SpaceAge, Alternative
   source-dirs: src
   ghc-options: -Wall
   # dependencies:
@@ -19,3 +20,12 @@ tests:
     dependencies:
       - space-age
       - hspec
+
+benchmarks:
+  bench:
+    main: bench.hs
+    source-dirs: bench
+    dependencies:
+      - space-age
+      - criterion
+    ghc-options: -O2

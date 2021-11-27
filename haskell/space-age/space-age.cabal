@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 3bb586a792220babe453798f2077fc62321dbebcb7f3e2b3533c9d78d9cde78e
+-- hash: 1aaef80b02db0ef9dfa4f6ebadd14ee747e3cdeb6eedc5a4040cb35fba6cb9bc
 
 name:           space-age
 version:        1.1.0.5
@@ -12,6 +12,7 @@ build-type:     Simple
 
 library
   exposed-modules:
+      Alternative
       SpaceAge
   other-modules:
       Paths_space_age
@@ -32,5 +33,19 @@ test-suite test
   build-depends:
       base
     , hspec
+    , space-age
+  default-language: Haskell2010
+
+benchmark bench
+  type: exitcode-stdio-1.0
+  main-is: bench.hs
+  other-modules:
+      Paths_space_age
+  hs-source-dirs:
+      bench
+  ghc-options: -O2
+  build-depends:
+      base
+    , criterion
     , space-age
   default-language: Haskell2010

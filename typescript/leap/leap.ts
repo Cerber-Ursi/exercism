@@ -21,6 +21,14 @@ export function isLeapYearNoIfs(year: number) {
     return (year % 400 === 0) || (year % 100 !== 0) && (year % 4 === 0)
 }
 
+// Canonical solution, according to mentor's notes.
+// Here we're doing both the first (reversing order) and the second (explicit checks elimination)
+// modifications to the naive one.
+// Works the same as simply reversed solution (i.e. about 10% speedup from the naive).
+export function isLeapYearNoIfsReversed(year: number) {
+    return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)
+}
+
 // Trying to eliminate explicit comparisons, hoping for late conversion to do its work.
 // In fact, this couldn't work, since conversions aren't late - they appear on negation.
 // And really, this is the same as naive approach.
