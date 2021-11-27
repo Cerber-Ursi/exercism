@@ -1,6 +1,6 @@
 module Main where
 
-import Pangram (checkByIterating, checkBySubtracting)
+import Pangram (checkByIterating, checkBySubtracting, checkBySet)
 import Criterion
 import Criterion.Main
 
@@ -8,6 +8,7 @@ main = defaultMain
     [ 
         bgroup "iterating" (group checkByIterating),
         bgroup "subtracting" (group checkBySubtracting),
+        bgroup "set" (group checkBySet)
     ]
 
 run :: (String -> Bool) -> (String, String) -> Benchmark

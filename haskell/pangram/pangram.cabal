@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: cfd2491b5a6a0d173a86eb96f229ed4813a0fecf371270a00bfdfad736dd9e38
+-- hash: adb056c6c321e1e2bfcd9f4ac6f1198ceaf4282d5491c3defece36a8710f2294
 
 name:           pangram
 version:        1.4.1.10
@@ -20,6 +20,7 @@ library
   ghc-options: -Wall
   build-depends:
       base
+    , containers
   default-language: Haskell2010
 
 test-suite test
