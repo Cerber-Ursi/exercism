@@ -32,15 +32,13 @@ lazy_static! {
 fn raindrop(n: u32) -> Option<String> {
     let s = DICTIONARY
         .iter()
-        .map(|&(num, sound)| if n % num == 0 { Some(sound) } else { None })
-        .filter(Option::is_some)
-        .map(Option::unwrap)
+        .filter_map(|&(num, sound)| if n % num == 0 { Some(sound) } else { None })
         .join("");
 
-    if s.len() > 0 {
-        Some(s)
-    } else {
+    if s.is_empty() {
         None
+    } else {
+        Some(s)
     }
 }
 

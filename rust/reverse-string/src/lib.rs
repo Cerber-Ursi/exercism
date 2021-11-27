@@ -1,5 +1,5 @@
 #[cfg(feature = "grapheme")]
-#[path=""]
+#[path = ""]
 mod impl_grapheme {
     mod reverser;
 
