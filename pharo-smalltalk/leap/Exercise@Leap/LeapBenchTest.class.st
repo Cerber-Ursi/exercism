@@ -8,9 +8,6 @@ Class {
 		'calculator',
 		'years'
 	],
-	#classInstVars : [
-		'calculator'
-	],
 	#category : #'Exercise@Leap'
 }
 

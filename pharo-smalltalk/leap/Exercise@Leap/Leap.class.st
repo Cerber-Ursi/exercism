@@ -14,12 +14,16 @@ Class {
 
 { #category : #check }
 Leap >> leapYear: anInteger [ 
+	"Tells if a given integer represents a leap year.
+	It may be redirected to one of other class methods; for the reasons we chose this one, see class comments."
+	
+	
 	^self leapYearSimple: anInteger 
 ]
 
 { #category : #check }
 Leap >> leapYearShortCircuit: anInteger [ 
-	"Tells if a given integer represents a leap year."
+	"Tells if a given integer represents a leap year. This method uses a kind of short-circuiting by passing blocks to the logical operators."
 	
 	^(anInteger rem: 4) == 0 and: [ 
 		(anInteger rem: 100) ~= 0 or: [
@@ -30,7 +34,9 @@ Leap >> leapYearShortCircuit: anInteger [
 
 { #category : #check }
 Leap >> leapYearSimple: anInteger [ 
-	"Tells if a given integer represents a leap year."
+	"Tells if a given integer represents a leap year. This is an almost naive implementation, directly combining three conditions into one."
 
-	^((anInteger rem: 4) == 0) and: (((anInteger rem: 100) ~= 0) or: ((anInteger rem: 400) == 0))
+	^((anInteger rem: 4) == 0) and: (
+		((anInteger rem: 100) ~= 0) or: ((anInteger rem: 400) == 0)
+	)
 ]
