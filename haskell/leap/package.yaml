@@ -19,3 +19,12 @@ tests:
     dependencies:
       - leap
       - hspec
+
+benchmarks:
+  bench:
+    main: bench.hs
+    source-dirs: bench
+    dependencies:
+      - leap
+      - criterion
+    ghc-options: -O2

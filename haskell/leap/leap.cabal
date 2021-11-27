@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f33f42efc998b16d5ad2cf15297ba1b6e3b3adc20f16d162aa4735d6b704bf4f
+-- hash: 09b517d47244afb08838208e2feef7df982c2f8a3f71d0328e8efcdf7ed57f3d
 
 name:           leap
 version:        1.5.1.9
@@ -32,5 +32,19 @@ test-suite test
   build-depends:
       base
     , hspec
+    , leap
+  default-language: Haskell2010
+
+benchmark bench
+  type: exitcode-stdio-1.0
+  main-is: bench.hs
+  other-modules:
+      Paths_leap
+  hs-source-dirs:
+      bench
+  ghc-options: -O2
+  build-depends:
+      base
+    , criterion
     , leap
   default-language: Haskell2010
