@@ -7,7 +7,7 @@ use unic_normal::StrNormalForm;
 ///
 /// It is handled internally by creating an (owned) String, normalized according to
 /// Unicode Normalization Form C (using the [Unic](https://docs.rs/unic-normal/0.9.0/unic_normal/) crate).
-/// If the normalization appears to be a no-op (e.g. when the string is already in NFC),
+/// If the normalization appears to be a no-op (i.e. when the string is already in NFC),
 /// the generated string is immediately thrown away without storing in struct, and Reverser uses
 /// the fallback implementation without graphemes handling.
 ///
@@ -23,13 +23,24 @@ use unic_normal::StrNormalForm;
 /// assert_eq!(Reverser::from("uüu").collect::<String>(), "uüu");
 /// ```
 ///
+/// You can also use the reference to the owned `String`.
 /// Note that Reverser borrows from the string he's got, so it can't be passed over to somewhere else:
 /// ```compile_fail
 /// # fn main() { let _ = failed(); }
 /// use reverse_string::Reverser;
 /// fn failed<'a>() -> Reverser<'a> {
 ///     let owned = String::from("local string");
-///     Reverser::from(owned.as_str())
+///     Reverser::from(&owned)
+/// }
+/// ```
+/// But, since it can be iterated to get the owned value, you can simply perform the transformation
+/// in the current scope:
+/// ```
+/// # fn main() { let _ = success(); }
+/// use reverse_string::Reverser;
+/// fn success() -> String {
+///     let owned = String::from("local string");
+///     Reverser::from(&owned).collect()
 /// }
 /// ```
 #[derive(Debug)]
@@ -75,9 +86,12 @@ impl<'a> Iterator for Reverser<'a> {
     }
 }
 
-// TODO: allow to pass in &String too (it's impossible for now)
-impl<'a> From<&'a str> for Reverser<'a> {
-    fn from(input: &'a str) -> Reverser {
+impl<'a, T> From<&'a T> for Reverser<'a>
+where
+    T: AsRef<str> + ?Sized,
+{
+    fn from(input: &'a T) -> Reverser {
+        let input: &'a str = input.as_ref();
         let nfc: String = input.nfc().collect();
         if nfc == input {
             Reverser {
