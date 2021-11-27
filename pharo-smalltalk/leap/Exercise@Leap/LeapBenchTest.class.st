@@ -8,7 +8,7 @@ Class {
 		'calculator',
 		'years'
 	],
-	#category : #'Exercise@Leap'
+	#category : #'Exercise@Leap-Benchmark'
 }
 
 { #category : #benchmarking }
